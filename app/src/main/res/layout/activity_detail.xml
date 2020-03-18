@@ -21,13 +21,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="15sp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/detail_place_of_origin_label"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:layout_marginTop="15sp"
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/origin_tv"
@@ -38,7 +42,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/detail_also_known_as_label"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:layout_marginTop="15sp"
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/also_known_tv"
@@ -49,7 +56,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/detail_ingredients_label"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:layout_marginTop="15sp"
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/ingredients_tv"
@@ -57,15 +67,18 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/description_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/detail_description_label"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:layout_marginTop="15sp"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/description_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </ScrollView>
