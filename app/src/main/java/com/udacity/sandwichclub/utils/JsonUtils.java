@@ -8,6 +8,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class JsonUtils {
 
     public static Sandwich parseSandwichJson(String json) {
@@ -26,7 +29,8 @@ public class JsonUtils {
 
             // get the also known as array
             JSONArray knownAs = name.getJSONArray("alsoKnownAs");
-            Log.d("JSON knownAs:", knownAs.toString());
+            List<String> kAs = jsonArrayToList(knownAs);
+            Log.d("JSON knownAs:", kAs.toString());
 
             // get the place of origin
             String origin = sandwich.getString("placeOfOrigin");
@@ -42,7 +46,8 @@ public class JsonUtils {
 
             // get the ingredients array
             JSONArray ingredients = sandwich.getJSONArray("ingredients");
-            Log.d("JSON ingredients:", ingredients.toString());
+            List<String> ings = jsonArrayToList(ingredients);
+            Log.d("JSON ingredients:", ings.toString());
 
         } catch(JSONException e){
             e.printStackTrace();
@@ -50,4 +55,23 @@ public class JsonUtils {
 
         return null;
     }
+
+    // this function will receive a JSONArray (of strings) and return a list of strings
+    private static List<String> jsonArrayToList(JSONArray array){
+
+        List<String> values = new ArrayList<String>();
+
+        // iterate over all JSON array values
+        for(int i = 0; i < array.length(); i++){
+
+            try {
+                values.add(array.getString(i));
+            } catch (JSONException e){
+                e.printStackTrace();
+            }
+        }
+
+        return values;
+    }
+
 }
