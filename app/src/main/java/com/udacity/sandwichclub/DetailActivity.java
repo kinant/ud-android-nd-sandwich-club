@@ -80,7 +80,7 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         for(String ing: sandwich.getIngredients()){
-            mKnownAs.append((ing) + "\n");
+            mIngredients.append((ing) + "\n");
         }
     }
 }

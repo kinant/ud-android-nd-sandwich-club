@@ -25,6 +25,7 @@
             android:paddingLeft="15sp">
 
             <TextView
+                android:id="@+id/lbl_origin_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/detail_place_of_origin_label"
