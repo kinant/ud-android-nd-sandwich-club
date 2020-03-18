@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,8 @@ public class DetailActivity extends AppCompatActivity {
     TextView mKnownAs;
     TextView mIngredients;
     TextView mDescription;
+    TextView mLabelAlsoKnown;
+    TextView mLabelOrigin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,9 @@ public class DetailActivity extends AppCompatActivity {
         mKnownAs = findViewById(R.id.also_known_tv);
         mIngredients = findViewById(R.id.ingredients_tv);
         mDescription = findViewById(R.id.description_tv);
+
+        mLabelAlsoKnown = findViewById(R.id.lbl_also_known_tv);
+        mLabelOrigin = findViewById(R.id.lbl_origin_tv);
 
         Intent intent = getIntent();
         if (intent == null) {
@@ -73,6 +79,26 @@ public class DetailActivity extends AppCompatActivity {
         // Populate UI Text Views with sandwich details
         mOrigin.setText(sandwich.getPlaceOfOrigin());
         mDescription.setText(sandwich.getDescription());
+
+        // if the place of origin is empty
+        // we remove it using View.GONE
+        // https://stackoverflow.com/questions/3805599/add-delete-view-from-layout
+        if(sandwich.getPlaceOfOrigin().isEmpty()){
+            mLabelOrigin.setVisibility(View.GONE);
+            mOrigin.setVisibility(View.GONE);
+        }
+
+        // if the array of also known as has 0 elements,
+        // then we remove the UI elements (just so it is prettier)
+        if (sandwich.getAlsoKnownAs().isEmpty()){
+            mKnownAs.setVisibility(View.GONE);
+            mLabelAlsoKnown.setVisibility(View.GONE);
+        }
+
+        // Note: We could check for all elements to see
+        // if any is empty and remove/hide them, but
+        // in this case, only the origin and also known as
+        // are missing for some sandwiches
 
         // iterate over the lists
         for(String knownAs: sandwich.getAlsoKnownAs()){
